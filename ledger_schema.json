@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "project": "illinoisproof",
+  "hash_strategy": {
+    "algorithm": ["SHA256", "BLAKE3"],
+    "format": "{sha256}:{blake3}",
+    "fallback": "SHA256:SHA256"
+  },
+  "receipt_types": {
+    "ingest": {
+      "required_fields": ["source", "records_count", "payload_hash", "tenant_id"],
+      "optional_fields": ["source_type", "redactions", "fetch_timestamp"]
+    },
+    "benford": {
+      "required_fields": ["entity", "chi_squared", "p_value", "pass_fail", "tenant_id"],
+      "optional_fields": ["digit_position", "observed_frequencies", "expected_frequencies", "sample_size"]
+    },
+    "entropy": {
+      "required_fields": ["entity", "compression_ratio", "z_score", "is_anomaly", "tenant_id"],
+      "optional_fields": ["baseline_mean", "baseline_std", "raw_size", "compressed_size"]
+    },
+    "network": {
+      "required_fields": ["graph_id", "nodes", "edges", "entropy", "tenant_id"],
+      "optional_fields": ["hubs", "centrality_scores", "communities"]
+    },
+    "tier1": {
+      "required_fields": ["finding_type", "entity", "severity", "evidence_hash", "tenant_id"],
+      "optional_fields": ["credit_card_flags", "vendor_flags", "overtime_flags", "dollar_value"]
+    },
+    "tier2": {
+      "required_fields": ["finding_type", "dollar_value", "recovery_status", "tenant_id"],
+      "optional_fields": ["crossmatch_gaps", "identity_flags", "waiver_patterns"]
+    },
+    "tier3": {
+      "required_fields": ["finding_type", "network_path", "confidence", "tenant_id"],
+      "optional_fields": ["pac_connections", "legislation_correlation", "nowork_flags"]
+    },
+    "citizen": {
+      "required_fields": ["output_type", "content", "tenant_id"],
+      "optional_fields": ["tweet_text", "dashboard_id", "reading_level"]
+    },
+    "fbi": {
+      "required_fields": ["package_id", "case_reference", "package_hash", "tenant_id"],
+      "optional_fields": ["custody_entries", "evidence_items", "created_by"]
+    },
+    "auditor": {
+      "required_fields": ["finding_id", "materiality", "recommendation", "tenant_id"],
+      "optional_fields": ["entity_budget", "compliance_status"]
+    },
+    "simulation": {
+      "required_fields": ["cycle_id", "scenario", "tenant_id"],
+      "optional_fields": ["accuracy_metrics", "violations", "findings_count", "detection_rate"]
+    },
+    "anomaly": {
+      "required_fields": ["metric", "baseline", "delta", "classification", "action", "tenant_id"],
+      "optional_fields": []
+    },
+    "anchor": {
+      "required_fields": ["merkle_root", "hash_algos", "batch_size", "tenant_id"],
+      "optional_fields": ["proof_path"]
+    }
+  },
+  "slo_thresholds": {
+    "benford_p_value": {"flag_below": 0.05, "critical_below": 0.01},
+    "entropy_z_score": {"flag_above": 2.0, "critical_above": 3.0},
+    "network_centrality": {"flag_above": 0.3, "critical_above": 0.5},
+    "detection_precision": {"min": 0.85},
+    "detection_recall": {"min": 0.90},
+    "calibration_match": {"min": 0.95},
+    "receipt_emission": {"required": 1.0},
+    "evidence_integrity": {"required": true}
+  },
+  "tiers": {
+    "tier1_dolton": {
+      "name": "Local Government (Dolton)",
+      "dollar_value": 3650000,
+      "detection_focus": "credit_card → deficit → vendor cascade"
+    },
+    "tier2_ides": {
+      "name": "IDES Pandemic Fraud",
+      "dollar_value": 5240000000,
+      "detection_focus": "identity theft via crossmatch gaps"
+    },
+    "tier3_madigan": {
+      "name": "Madigan/ComEd Institutional",
+      "dollar_value": 200000000,
+      "detection_focus": "PAC-to-legislation network entropy"
+    }
+  },
+  "simulation_scenarios": [
+    "BASELINE",
+    "DOLTON_CALIBRATION",
+    "IDES_CALIBRATION",
+    "MADIGAN_CALIBRATION",
+    "CASCADE",
+    "GODEL"
+  ]
+}
