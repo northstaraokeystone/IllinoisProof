@@ -1,0 +1,92 @@
+{
+  "calibration_source": "USA v. Madigan Trial Exhibits and DPA Documents",
+  "case_number": "1:22-cr-00115",
+  "conviction_date": "2024",
+  "sentence": "7.5 years",
+  "appeal_status": "pending",
+
+  "financial_summary": {
+    "comed_dpa_fine": 200000000,
+    "nowork_contracts_total": 1300000,
+    "friends_of_madigan_cash": 6100000
+  },
+
+  "key_entities": {
+    "pacs": {
+      "friends_of_madigan": {
+        "committee_id": "665",
+        "name": "Friends of Michael J Madigan",
+        "cash_on_hand": 6100000,
+        "role": "recipient"
+      }
+    },
+    "contributors": {
+      "comed": {
+        "name": "ComEd/Exelon Corporation",
+        "via": "Executive personal contributions",
+        "dpa_admission": "Bribery scheme to obtain legislation"
+      }
+    },
+    "intermediaries": {
+      "doherty_firm": {
+        "name": "Doherty firm",
+        "contract_period": "2011-2019",
+        "contract_type": "Legal consulting",
+        "work_performed": false
+      },
+      "shaw_decremer": {
+        "name": "Shaw Decremer",
+        "contract_period": "2011-2019",
+        "contract_type": "Various",
+        "work_performed": false
+      }
+    },
+    "nowork_recipients": {
+      "olivo": {
+        "name": "Olivo",
+        "monthly_payment": 4000,
+        "duration_years": 8,
+        "work_performed": false
+      },
+      "nice": {
+        "name": "Nice",
+        "monthly_payment": 5000,
+        "duration_years": 8,
+        "work_performed": false
+      },
+      "acevedo": {
+        "name": "Acevedo",
+        "monthly_payment": 5000,
+        "duration_years": 8,
+        "work_performed": false
+      }
+    }
+  },
+
+  "legislation": {
+    "SB1652": {
+      "bill_number": "SB1652",
+      "public_act": "PA 97-0616",
+      "title": "Energy Infrastructure Modernization Act",
+      "passage_date": "2011-10",
+      "passage_method": "veto_override",
+      "beneficiary": "ComEd",
+      "proven_bribery": true,
+      "value_to_comed": "Rate increases enabled"
+    }
+  },
+
+  "expected_detection": {
+    "pac_network_entropy": "low (concentrated)",
+    "contribution_vote_correlation": "high",
+    "nowork_contracts": "flag",
+    "hub_centrality": "Madigan committees high"
+  },
+
+  "detection_thresholds": {
+    "pac_concentration_flag": 0.3,
+    "network_hub_threshold": 0.3,
+    "nowork_contract_deliverable_ratio": 0.1,
+    "contribution_vote_window_days": 90
+  }
+}

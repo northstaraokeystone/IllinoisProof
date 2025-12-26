@@ -1,0 +1,76 @@
+{
+  "calibration_source": "Illinois Auditor General Report on IDES Pandemic Response",
+  "fiscal_years": ["FY2020", "FY2021", "FY2022"],
+  "report_date": "2023",
+
+  "overpayment_summary": {
+    "total_overpayments": 5240000000,
+    "recovered": 511700000,
+    "recovery_rate": 0.0977,
+    "non_recoverable_identity_theft": 2800000000,
+    "pending_recovery": 1928300000
+  },
+
+  "administrative_metrics": {
+    "overpayment_letters_sent": 174685,
+    "waiver_requests": 67678,
+    "waiver_denial_rate": 0.62,
+    "average_overpayment": 5505
+  },
+
+  "crossmatch_gaps": {
+    "prison_registry": {
+      "database": "Illinois Department of Corrections",
+      "normal_status": "real-time",
+      "gap_start": "2020-03-01",
+      "gap_end": "2021-09-30",
+      "gap_duration_months": 18,
+      "estimated_fraud": 40500000,
+      "description": "Payments to incarcerated individuals during verification suspension"
+    },
+    "county_jails": {
+      "database": "County Jail Registries",
+      "normal_status": "real-time",
+      "gap_start": "2020-03-01",
+      "gap_end": "2021-09-30",
+      "estimated_fraud": "unknown"
+    },
+    "death_master": {
+      "database": "SSA Death Master File",
+      "normal_status": "real-time",
+      "gap_start": "2020-03-01",
+      "gap_end": "2021-09-30",
+      "estimated_fraud": 6000000,
+      "description": "Payments to deceased individuals during verification suspension"
+    },
+    "ndnh": {
+      "database": "National Directory of New Hires",
+      "normal_status": "real-time",
+      "gap_start": "2020-03-01",
+      "gap_end": "2021-09-30",
+      "estimated_fraud": 600000,
+      "description": "Payments to employed individuals during verification suspension"
+    }
+  },
+
+  "claims_volume": {
+    "normal_weekly": 50000,
+    "peak_weekly_apr_2020": 500000,
+    "increase_factor": 10
+  },
+
+  "expected_detection": {
+    "crossmatch_gap_claims": "spike during gap",
+    "deceased_claims": "flag",
+    "incarcerated_claims": "flag",
+    "geographic_clustering": "flag",
+    "recovery_rate": "below_benchmark"
+  },
+
+  "detection_thresholds": {
+    "claims_spike_multiplier": 2.0,
+    "recovery_rate_benchmark": 0.10,
+    "identity_theft_rate_estimate": 0.54,
+    "material_overpayment": 5000
+  }
+}

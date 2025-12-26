@@ -1,0 +1,54 @@
+{
+  "calibration_source": "Dolton/Henyard FBI Probe Documentation",
+  "as_of_date": "2024-12",
+  "status": "FBI probe ongoing, no charges as of Dec 2025",
+
+  "financial_summary": {
+    "deficit": 3650000,
+    "unexplained_spending": 779000,
+    "credit_card_expenditures_missing_receipts": 779000
+  },
+
+  "red_flags": {
+    "credit_card": {
+      "amazon_single_purchase": {
+        "amount": 33027,
+        "description": "Single Amazon transaction",
+        "flag_type": "large_single_transaction"
+      },
+      "missing_receipts_total": 779000,
+      "round_number_thresholds": [10000, 25000, 33000, 50000]
+    },
+
+    "overtime": {
+      "police_332_hours": {
+        "reported_hours": 332,
+        "period_hours": 336,
+        "impossibility_ratio": 0.988,
+        "description": "Police officer logged 332 hours in 336-hour pay period"
+      }
+    },
+
+    "vendor_concentration": {
+      "oakk_construction": {
+        "vendor_name": "O.A.K.K. Construction",
+        "contracts_before_plea": 200000,
+        "owner_status": "Pleaded guilty to bribery",
+        "flag_type": "contractor_with_bribery_conviction"
+      }
+    }
+  },
+
+  "expected_detection": {
+    "benford_first_digit": "flag",
+    "compression_entropy": "anomaly",
+    "vendor_hhi": "concentrated"
+  },
+
+  "detection_thresholds": {
+    "single_transaction_flag": 25000,
+    "vendor_concentration_flag": 0.25,
+    "overtime_impossibility": 1.0,
+    "missing_receipt_materiality": 0.01
+  }
+}
